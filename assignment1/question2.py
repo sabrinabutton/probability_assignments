@@ -13,29 +13,46 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 # Load MATLAB files
-RV1 = scipy.io.loadmat('RV1.mat')
-RV2 = scipy.io.loadmat('RV2.mat')
-RV3 = scipy.io.loadmat('RV3.mat')
+RV1 = scipy.io.loadmat('C:\\Users\\lukep\\OneDrive\\Serious-Stuff\\3rd-year\\ELEC-326-Probability-and-Random-Processes\\probability_assignments\\assignment1\\\RV1.mat')
+RV2 = scipy.io.loadmat('C:\\Users\\lukep\\OneDrive\\Serious-Stuff\\3rd-year\\ELEC-326-Probability-and-Random-Processes\\probability_assignments\\assignment1\\\RV2.mat')
+RV3 = scipy.io.loadmat('C:\\Users\\lukep\\OneDrive\\Serious-Stuff\\3rd-year\\ELEC-326-Probability-and-Random-Processes\\probability_assignments\\assignment1\\\RV3.mat')
 
 # Get the RVs from MATLAB files
 RV1 = RV1['RV1']
 RV2 = RV2['RV2']
 RV3 = RV3['RV3']
 
-# Count frequency of each value of RV
-def counter(trial, outcomes=100, min=0, max=100):
-        H = np.zeros(outcomes)
-        for i in range(trial.size):
-            H[trial[i] - (min + 1) ] += 1
+# Calculate the mean of RVs
+def mean(input):
+    return np.sum(input)/len(input)
 
-        return H
+# Calculate the variance of RVs
+def variance(input):
+    return np.sum((input - mean(input))**2)/len(input)
+
+print("Mean of RV1: ", mean(RV1[0]))
+print("Mean of RV2: ", mean(RV2[0]))
+print("Mean of RV3: ", mean(RV3[0]))
+
+print("Variance of RV1: ", variance(RV1[0]))
+print("Variance of RV2: ", variance(RV2[0]))
+print("Variance of RV3: ", variance(RV3[0]))
+
+# Count frequency of each value of RV
+def counter(input, min=0, max=None):
+    if max is None:
+        max = np.max(input)
+    H = np.zeros(max - min + 1)
+    for i in input:
+        H[i - min] += 1
+    return H    
 
 # Plot bar chart of RV
-def plot(name, input, outcomes=100, min=0, max=100):
-    H = counter(input, outcomes, min, max)
+def plot(name, H):
     plt.figure()
-    plt.bar(np.arange(outcomes), H, align='center')
+    plt.bar(np.arange(len(H)), H)
     plt.title(name)
+    plt.xlabel("Value")
     plt.ylabel("Frequency")
     plt.show()
 
