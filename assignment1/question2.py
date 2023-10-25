@@ -13,9 +13,9 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 # Load MATLAB files
-RV1 = scipy.io.loadmat('C:\\Users\\lukep\\OneDrive\\Serious-Stuff\\3rd-year\\ELEC-326-Probability-and-Random-Processes\\probability_assignments\\assignment1\\\RV1.mat')
-RV2 = scipy.io.loadmat('C:\\Users\\lukep\\OneDrive\\Serious-Stuff\\3rd-year\\ELEC-326-Probability-and-Random-Processes\\probability_assignments\\assignment1\\\RV2.mat')
-RV3 = scipy.io.loadmat('C:\\Users\\lukep\\OneDrive\\Serious-Stuff\\3rd-year\\ELEC-326-Probability-and-Random-Processes\\probability_assignments\\assignment1\\\RV3.mat')
+RV1 = scipy.io.loadmat('RV1.mat')
+RV2 = scipy.io.loadmat('RV2.mat')
+RV3 = scipy.io.loadmat('RV3.mat')
 
 # Get the RVs from MATLAB files
 RV1 = RV1['RV1']
